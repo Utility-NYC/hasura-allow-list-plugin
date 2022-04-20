@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "declaration": true,
+        "declarationMap": true,
+        "emitDecoratorMetadata": true,
+        "preserveConstEnums": true,
+        "module": "commonjs",
+        "target": "es6",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "outDir": "./dist",
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "lib": ["es5", "es6", "es7", "es2019", "esnext.asynciterable", "es2017", "ES2020.Promise"],
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true,
+        "composite": true
+    },
+
+    "include": ["src"],
+    "exclude": ["node_modules", "**/__tests__/*"]
+}

@@ -1,0 +1,73 @@
+{
+    "name": "@utility-nyc/hasura-allow-list-plugin",
+    "version": "0.0.1",
+    "license": "MIT",
+    "scripts": {
+        "localp": "local-package-publisher -p",
+        "lint": "eslint */**/*.{js,ts,tsx} --quiet --fix | snazzy",
+        "build": "run-s clean build:tsc",
+        "build:tsc": "tsc -b",
+        "test": "jest --config=./jest.config.js",
+        "pretty": "prettier --write src/**/*.{js,jsx,ts,tsx} ",
+        "clean": "rimraf lib coverage tsconfig.tsbuildinfo",
+        "prepare": "husky install && yarn build",
+        "deploy": "cd dist && npm publish",
+        "predeploy": "yarn build",
+        "prepublishOnly": "yarn lint",
+        "preversion": "yarn lint",
+        "version": "yarn pretty && git add -A src",
+        "postversion": "git push && git push --tags"
+    },
+    "dependencies": {
+        "graphql": "16.0.1",
+        "lodash": "^4.17.21",
+        "node-fetch": "^3.2.3",
+        "persistgraphql": "^0.3.11"
+    },
+    "files": [
+        "dist/**/*"
+    ],
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "devDependencies": {
+        "@types/lodash": "^4.14.181",
+        "@types/node-fetch": "^2.6.1",
+        "@types/webpack": "^5.28.0",
+        "@typescript-eslint/eslint-plugin": "^4.23.0",
+        "@typescript-eslint/parser": "^4.23.0",
+        "eslint": "^7.26.0",
+        "eslint-config-airbnb-typescript": "^12.3.1",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^3.4.0",
+        "husky": "^7.0.0",
+        "lint-staged": "^11.0.0",
+        "npm-run-all": "^4.1.5",
+        "prettier": "^2.3.0",
+        "pretty-quick": "^3.1.0",
+        "run-s": "^0.0.0",
+        "snazzy": "^9.0.0",
+        "ts-node": "^9.1.1",
+        "typescript": "^4.2.4",
+        "webpack": "^5.28.0"
+    },
+    "lint-staged": {
+        "src/**/*.{js,ts,tsx}": [
+            "eslint --fix"
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/Utility-NYC/hasura-allow-list-plugin.git",
+        "directory": "src"
+    },
+    "peerDependencies": {
+        "webpack": "^5.20.0",
+        "graphql": "^14.0.0 || ^15.0.0 || ^16.0.0"
+    },
+    "publishConfig": {
+        "access": "restricted",
+        "@utility-nyc:registry": "https://npm.pkg.github.com/"
+    }
+}
